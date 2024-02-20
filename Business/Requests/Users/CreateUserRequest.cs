@@ -1,4 +1,6 @@
-﻿namespace Business.Requests.Users
+﻿using Entities.Concretes;
+
+namespace Business.Requests.Users
 {
     public class CreateUserRequest
     {
@@ -9,5 +11,7 @@
         public string NationalIdentity { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public string CompanyName { get; set; }
     }
 }

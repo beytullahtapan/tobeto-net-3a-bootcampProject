@@ -4,5 +4,7 @@
     {
         public int UserId { get; set; }
         public string Position { get; set; }
+        public string UserName { get; set; }
+        public string Response {  get; set; }
     }
 }

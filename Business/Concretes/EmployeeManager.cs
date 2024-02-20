@@ -1,4 +1,5 @@
-﻿using Business.Abstracts;
+﻿using Azure;
+using Business.Abstracts;
 using Business.Requests.Employees;
 using Business.Responses.Employees;
 using DataAccess.Abstracts;
@@ -20,9 +21,10 @@ namespace Business.Concretes
             List<GetAllEmployeeResponse> employees = new List<GetAllEmployeeResponse>();
             foreach (var employee in await _employeeRepository.GetAll())
             {
-                GetAllEmployeeResponse response = new();
-                response.UserId = employee.Id;
-                response.Position = employee.Position;
+                GetAllEmployeeResponse response = new GetAllEmployeeResponse {
+                    UserId = employee.Id,
+                    Position = employee.Position,
+                };
                 employees.Add(response);
             }
             return employees;
@@ -30,50 +32,71 @@ namespace Business.Concretes
 
         public async Task<GetByIdEmployeeResponse> GetById(int id)
         {
-            GetByIdEmployeeResponse response = new();
             Employee employee = await _employeeRepository.Get(x => x.Id == id);
-            response.UserId = employee.Id;
-            response.Position = employee.Position;
+            GetByIdEmployeeResponse response = new GetByIdEmployeeResponse {
+                UserId = employee.Id,
+                Position = employee.Position,
+                UserName = employee.UserName  
+            };
             return response;
         }
 
         public async Task<CreateEmployeeResponse> AddAsync(CreateEmployeeRequest request)
         {
-            Employee employee = new();
-            employee.Id = request.UserId;
-            employee.Position = request.Position;
+            Employee employee = new Employee {
+                Position = request.Position,
+                UserName = request.UserName,
+                Email = request.Email,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                NationalIdentity = request.NationalIdentity,
+                DateOfBirth = request.DateOfBirth,
+                Password = request.Password
+             };
             await _employeeRepository.Add(employee);
 
-            CreateEmployeeResponse response = new();
-            response.UserId = employee.Id;
-            response.Position = employee.Position;
+            CreateEmployeeResponse response = new CreateEmployeeResponse { 
+                UserId= employee.Id,
+                Position = employee.Position,
+                Response = "Employee Eklendi."
+            };
             return response;
         }
 
         public async Task<DeleteEmployeeResponse> DeleteAsync(DeleteEmployeeRequest request)
         {
-            Employee employee = new();
-            employee.Id = request.UserId;
-            employee.Position = request.Position;
+            Employee employee = new Employee { 
+                Id = request.UserId
+            };
             await _employeeRepository.Delete(employee);
 
 
-            DeleteEmployeeResponse response = new();
-            response.UserId = employee.Id;
-            response.Position = employee.Position;
+            DeleteEmployeeResponse response = new DeleteEmployeeResponse { 
+                UserId = employee.Id,
+                Response = "Employee Silindi."
+
+            };
             return response;
         }
 
         public async Task<UpdateEmployeeResponse> UpdateAsync(UpdateEmployeeRequest request)
         {
             Employee employee = await _employeeRepository.Get(x => x.Id == request.UserId);
-            employee.Id = request.UserId;
             employee.Position = request.Position;
+            employee.UserName = request.UserName;
+            employee.Email = request.Email;
+            employee.FirstName = request.FirstName;
+            employee.LastName = request.LastName;
+            employee.NationalIdentity = request.NationalIdentity;
+            employee.DateOfBirth = request.DateOfBirth;
+            employee.Password = request.Password;
             await _employeeRepository.Update(employee);
 
-            UpdateEmployeeResponse response = new();
-            response.UserId = employee.Id;
-            response.Position = employee.Position;
+            UpdateEmployeeResponse response = new UpdateEmployeeResponse {
+                UserId = employee.Id,
+                Position = employee.Position,
+                Response = "Güncelleme Başarılı"
+            };
             return response;
         }
     }

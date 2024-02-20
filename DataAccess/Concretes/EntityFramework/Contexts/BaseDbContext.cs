@@ -9,6 +9,10 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<Applicant> Applicants { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -17,6 +21,7 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Applicant>().ToTable("Applicants");
             modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<Instructor>().ToTable("Instructors");
