@@ -16,6 +16,11 @@ namespace Core.DataAccess.EntityFramework
         {
             Context = context;
         }
+        //IQueryable, LINQ sorguları oluşturmak için kullanılan bir.NET arayüzüdür.TEntity, metodun sorgulanacağı veri tipidir.
+        //Query: Bu, metodun adıdır. Query metodu, IQueryable tipinde bir veri kaynağına LINQ sorguları oluşturmak için kullanılır.
+        //Buradaki işleyiş:
+        /*_context nesnesinin Set<TEntity>() metodu çağrılır.Bu metot, TEntity tipindeki veriler için bir DbSet nesnesi döndürür.
+        DbSet nesnesi, bir IQueryable nesnesine dönüştürülür. Dönüştürülen IQueryable nesnesi, metodun dönüş değeri olarak döndürülür.*/
         public IQueryable<TEntity> Query() => Context.Set<TEntity>();
 
         public async Task<TEntity> AddAsync(TEntity entity)
