@@ -16,10 +16,5 @@ namespace Entities.Concretes
             Id = id;
             Name = name;
         }
-
-        public ApplicationState(string name) : this()
-        {
-            Name = name;
-        }
     }
 }

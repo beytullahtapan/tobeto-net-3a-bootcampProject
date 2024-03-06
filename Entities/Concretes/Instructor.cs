@@ -23,17 +23,5 @@
             CompanyName = companyName;
         }
 
-        public Instructor(string userName, string firstName, string lastName, DateTime dateOfBirth, string nationalIdentity,
-            string email, string password, string companyName) : this()
-        {
-            UserName = userName;
-            FirstName = firstName;
-            LastName = lastName;
-            DateOfBirth = dateOfBirth;
-            NationalIdentity = nationalIdentity;
-            Email = email;
-            Password = password;
-            CompanyName = companyName;
-        }
     }
 }

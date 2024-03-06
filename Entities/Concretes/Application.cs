@@ -24,11 +24,5 @@ namespace Entities.Concretes
             ApplicationStateId = applicationStatedId;
         }
 
-        public Application(int applicantId, int bootcampId, int applicationStatedId) : this()
-        {
-            ApplicantId = applicantId;
-            BootcampId = bootcampId;
-            ApplicationStateId = applicationStatedId;
-        }
     }
 }

@@ -30,13 +30,5 @@ namespace Entities.Concretes
             EndDate = endDate;
         }
 
-        public Bootcamp(int instructorId, int bootcampStateId, string name, DateTime startDate, DateTime endDate) : this()
-        {
-            InstructorId = instructorId;
-            BootcampStateId = bootcampStateId;
-            Name = name;
-            StartDate = startDate;
-            EndDate = endDate;
-        }
     }
 }

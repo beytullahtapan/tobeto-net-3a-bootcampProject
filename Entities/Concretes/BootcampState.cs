@@ -17,9 +17,5 @@ namespace Entities.Concretes
             Name = name;
         }
 
-        public BootcampState(string name) : this()
-        {
-            Name = name;
-        }
     }
 }

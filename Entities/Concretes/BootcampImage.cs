@@ -22,10 +22,5 @@ namespace Entities.Concretes
             ImagePath = imagePath;
         }
 
-        public BootcampImage(int bootcampId, string imagePath) : this()
-        {
-            BootcampId = bootcampId;
-            ImagePath = imagePath;
-        }
     }
 }

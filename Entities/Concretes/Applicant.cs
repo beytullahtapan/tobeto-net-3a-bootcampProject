@@ -25,18 +25,5 @@
             Password = password;
             About = about;
         }
-
-        public Applicant(string userName, string firstName, string lastName, DateTime dateOfBirth, string nationalIdentity,
-            string email, string password, string about) : this()
-        {
-            UserName = userName;
-            FirstName = firstName;
-            LastName = lastName;
-            DateOfBirth = dateOfBirth;
-            NationalIdentity = nationalIdentity;
-            Email = email;
-            Password = password;
-            About = about;
-        }
     }
 }

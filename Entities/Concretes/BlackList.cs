@@ -22,11 +22,5 @@ namespace Entities.Concretes
             Date = dateTime;
         }
 
-        public BlackList(int applicantId, string reason, DateTime dateTime) : this()
-        {
-            ApplicantId = applicantId;
-            Reason = reason;
-            Date = dateTime;
-        }
     }
 }
