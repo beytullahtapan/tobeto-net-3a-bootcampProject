@@ -16,5 +16,6 @@ namespace Entities.Concretes
             Id = id;
             Name = name;
         }
+
     }
 }

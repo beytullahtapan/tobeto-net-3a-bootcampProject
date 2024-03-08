@@ -22,6 +22,5 @@
             Password = password;
             CompanyName = companyName;
         }
-
     }
 }
